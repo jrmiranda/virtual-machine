@@ -4,24 +4,25 @@
 */
 
 #include <stdio.h>
+#include <stdint.h>
 
 #define NUM_REGS 32
 #define MEM_SIZE 65536
 #define PROGRAM_SIZE 1024
 
-int regs[NUM_REGS] = {0};
-int mem[MEM_SIZE] = {0};
+uint16_t regs[NUM_REGS] = {0};
+uint16_t mem[MEM_SIZE] = {0};
 
-int pc = 0;
-int program[PROGRAM_SIZE] = {};
+uint16_t pc = 0;
+uint32_t program[PROGRAM_SIZE] = {};
 
-int instr, instr_type, instr_class, instr_op;
+uint16_t instr, instr_type, instr_class, instr_op;
 
-int offset0, offset1;
-int *op0, *op1, *op2;
-int imm = 0;
+uint16_t offset0, offset1;
+uint16_t *op0, *op1, *op2;
+uint16_t imm = 0;
 
-int fetch() {
+uint32_t fetch() {
   return program[pc++];
 }
 
